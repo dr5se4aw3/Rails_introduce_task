@@ -16,6 +16,19 @@ class TclonesController < ApplicationController
     end
   end
 
+  def edit
+    @tclone = Tclone.find(params[:id])
+  end
+
+  def update
+    @tclone = Tclone.find(params[:id])
+    if @tclone.update(tclone_params)
+      redirect_to tclones_path, notice: "ツイートを編集しました"
+    else
+      render :edit
+    end
+  end
+
   private
   def tclone_params
     params.require(:tclone).permit(:content)

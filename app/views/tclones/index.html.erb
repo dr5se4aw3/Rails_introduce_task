@@ -2,6 +2,7 @@
 <% @tclones.each do |tclone| %>
 <div class="tweet">
   <p><%= tclone.content %></p>
+  <p><%= link_to 'ツイートを編集', edit_tclone_path(tclone.id) %></p>
 </div>
 <% end %>
 

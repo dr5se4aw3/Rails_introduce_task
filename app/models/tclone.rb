@@ -1,0 +1,2 @@
+class Tclone < ApplicationRecord
+end

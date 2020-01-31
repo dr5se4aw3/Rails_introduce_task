@@ -1,0 +1,8 @@
+<h2>ツイート一覧</h2>
+<% @tclones.each do |tclone| %>
+<div class="tweet">
+  <p><%= tclone.content %></p>
+</div>
+<% end %>
+
+<%= link_to 'ツイート画面へ', new_tclone_path %>

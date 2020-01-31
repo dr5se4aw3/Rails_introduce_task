@@ -3,6 +3,7 @@
 <div class="tweet">
   <p><%= tclone.content %></p>
   <p><%= link_to 'ツイートを編集', edit_tclone_path(tclone.id) %></p>
+  <p><%= link_to 'ツイートを削除', tclone_path(tclone.id), method: :delete %></p>
 </div>
 <% end %>
 

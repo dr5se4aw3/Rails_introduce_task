@@ -29,6 +29,12 @@ class TclonesController < ApplicationController
     end
   end
 
+  def destroy
+    @tclone = Tclone.find(params[:id])
+    @tclone.destroy
+    redirect_to tclones_path, notice: "ツイートを削除しました"
+  end
+
   private
   def tclone_params
     params.require(:tclone).permit(:content)

@@ -1,0 +1,23 @@
+
+<%= form_with(model: @tclone, local: true, url: choose_new_or_edit) do |form| %>
+<%# このurlはhelperメソッドに記載してます。helperメソッドは全てのviewから参照が可能なファイルです %>
+  <% if @tclone.errors.any? %>
+    <div id="error_explanation" >
+      <h2><%= @tclone.errors.count %>件のエラーがあります</h2>
+      <ul>
+        <% @tclone.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="tweet_content">
+    <p><%= form.label :content %></p>
+    <p><%= form.text_area :content, size: "70x10" %></p>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<p><%= link_to 'ツイート一覧画面へ', tclones_path %></p>

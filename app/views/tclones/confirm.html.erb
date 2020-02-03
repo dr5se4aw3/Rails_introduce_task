@@ -1,0 +1,11 @@
+<h2>ツイート編集</h2>
+<%= form_with(model: @tclone, local: true,) do |form| %>
+  <div class="tweet_content">
+    <%= form.hidden_field :content %>
+    <p>内容：<%= @tclone.content %></p>
+  </div>
+  <%= form.submit "投稿する" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>
+
+<p><%= link_to 'ツイート一覧画面へ', tclones_path %></p>

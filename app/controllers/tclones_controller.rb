@@ -9,10 +9,14 @@ class TclonesController < ApplicationController
 
   def create
     @tclone = Tclone.new(tclone_params)
-    if @tclone.save
-      redirect_to tclones_path, notice: "ツイートを追加しました"
-    else
+    if params[:back]
       render :new
+    else
+      if @tclone.save
+        redirect_to tclones_path, notice: "ツイートを追加しました"
+      else
+        render :new
+      end
     end
   end
 
@@ -33,6 +37,11 @@ class TclonesController < ApplicationController
     @tclone = Tclone.find(params[:id])
     @tclone.destroy
     redirect_to tclones_path, notice: "ツイートを削除しました"
+  end
+
+  def confirm
+    @tclone = Tclone.new(tclone_params)
+    render :new if @tclone.invalid?
   end
 
   private

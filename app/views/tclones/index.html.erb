@@ -1,10 +1,25 @@
-<h2>ツイート一覧</h2>
-<% @tclones.each do |tclone| %>
-<div class="tweet">
-  <p><%= tclone.content %></p>
-  <p><%= link_to 'ツイートを編集', edit_tclone_path(tclone.id) %></p>
-  <p><%= link_to 'ツイートを削除', tclone_path(tclone.id), method: :delete %></p>
-</div>
-<% end %>
+<div class="container">
+  <header class="header">
+    <a class="header_left">Twitterクローン</a>
+    <%= link_to 'ツイート画面へ', new_tclone_path, class: "header_right"%>
 
-<%= link_to 'ツイート画面へ', new_tclone_path %>
+  </header>
+
+  <div class="index_container">
+    <h2>ツイート一覧</h2>
+    <% @tclones.each do |tclone| %>
+    <div class="tweet">
+      <p id="content"><%= tclone.content %></p>
+      <ul>
+        <li><%= link_to 'ツイートを編集', edit_tclone_path(tclone.id) %></li>
+        <li><%= link_to 'ツイートを削除', tclone_path(tclone.id), method: :delete %></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+
+  <footer class="footer">
+    <p>2020年01月期　松原弘樹　Ruby on Rails入門シリーズ課題【TwitterClone】</p>
+  </footer>
+
+</div>

@@ -1,4 +1,5 @@
 class TclonesController < ApplicationController
+  before_action :find_tclone , only: [:edit, :update, :destroy]
   def index
     @tclones = Tclone.all
   end
@@ -21,11 +22,9 @@ class TclonesController < ApplicationController
   end
 
   def edit
-    @tclone = Tclone.find(params[:id])
   end
 
   def update
-    @tclone = Tclone.find(params[:id])
     if @tclone.update(tclone_params)
       redirect_to tclones_path, notice: "ツイートを編集しました"
     else
@@ -34,7 +33,6 @@ class TclonesController < ApplicationController
   end
 
   def destroy
-    @tclone = Tclone.find(params[:id])
     @tclone.destroy
     redirect_to tclones_path, notice: "ツイートを削除しました"
   end
@@ -47,6 +45,10 @@ class TclonesController < ApplicationController
   private
   def tclone_params
     params.require(:tclone).permit(:content)
+  end
+
+  def find_tclone
+    @tclone = Tclone.find(params[:id])
   end
 
 end
